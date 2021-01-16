@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SearchAggregator.DataAccess
+namespace SearchAggregator.DataAccess.Models
 {
     public class Resource : BaseEntity
     {

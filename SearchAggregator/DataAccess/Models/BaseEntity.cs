@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SearchAggregator.DataAccess
+namespace SearchAggregator.DataAccess.Models
 {
     public class BaseEntity
     {

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SearchAggregator.Repositories;
+using SearchAggregator.Services;
 
 namespace SearchAggregator
 {
@@ -29,6 +30,10 @@ namespace SearchAggregator
                 options.UseSqlServer(connection)
                 .UseLoggerFactory(LoggerFactory.Create(buider => buider.AddConsole()));
             });
+            services.AddScoped(typeof(IResourceRepository), typeof(ResourceRepository));
+            services.AddScoped(typeof(IKeywordRepository), typeof(KeywordRepository));
+
+            services.AddTransient<SearchService, CustomSearchServices>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,7 +43,8 @@ namespace SearchAggregator
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseRouting();
 

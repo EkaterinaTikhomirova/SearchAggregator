@@ -1,4 +1,4 @@
-﻿using SearchAggregator.DataAccess;
+﻿using SearchAggregator.DataAccess.Models;
 
 namespace SearchAggregator.Repositories
 {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SearchAggregator.DataAccess.Models;
 
 namespace SearchAggregator.DataAccess.EntityBuilders
 {

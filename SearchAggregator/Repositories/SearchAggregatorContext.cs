@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SearchAggregator.DataAccess;
+using SearchAggregator.DataAccess.Models;
 using SearchAggregator.DataAccess.EntityBuilders;
 
 namespace SearchAggregator.Repositories

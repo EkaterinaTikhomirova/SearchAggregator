@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SearchAggregator.DataAccess
+namespace SearchAggregator.DataAccess.Models
 {
     public class Keyword : BaseEntity
     {

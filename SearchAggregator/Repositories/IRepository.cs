@@ -1,4 +1,4 @@
-﻿using SearchAggregator.DataAccess;
+﻿using SearchAggregator.DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

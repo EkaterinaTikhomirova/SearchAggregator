@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Aggregator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <label for="searchText">Input request:</label>
+        <input id="searchText" />
+        <button id="searchButton">Search</button>
+    </div>
+    <div id="partialDiv"></div>
+    <script>
+        $(document).ready(function () {
+            $("#searchButton").click(function () {
+                var text = $("#searchText").val();
+                var partialDiv = $("#partialDiv");
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: "api/Search",
+                    data: { "name": text },
+                    success: function (data) {
+                        data.forEach(element => addDiv(element))
+                    },
+                    error: function (xhr, ajOpt, thrownError) {
+                        alert("Failed to retrieve results");
+                    }
+                })
+            })
+        })
+        function addDiv(row) {
+
+            const div = document.createElement("div");
+
+            const link = document.createElement("a");
+            link.setAttribute("style", "cursor:pointer;padding:15px;");
+            link.setAttribute("href", row.urlAddress);
+            link.setAttribute("title", row.title);
+            link.append(row.title);
+            div.appendChild(link);
+
+            var p = document.createElement("p");
+            var text = document.createTextNode(row.description);
+            p.appendChild(text);
+
+            div.appendChild(p);
+
+            document.body.appendChild(div);
+        }
+    </script>
+</body>
+
+</html>

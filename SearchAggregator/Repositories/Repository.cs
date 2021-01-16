@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SearchAggregator.DataAccess;
+using SearchAggregator.DataAccess.Models;
 using System.Threading.Tasks;
 
 namespace SearchAggregator.Repositories
