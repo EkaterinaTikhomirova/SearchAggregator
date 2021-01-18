@@ -9,6 +9,7 @@ namespace SearchAggregator.DataAccess.EntityBuilders
         {
             entityBuilder.HasKey(k => k.Id);
             entityBuilder.Property(k => k.Word).IsRequired();
+            entityBuilder.HasIndex(k => k.Word).IsUnique();
         }
     }
 }

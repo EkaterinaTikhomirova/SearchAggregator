@@ -23,15 +23,15 @@ namespace SearchAggregator.Services
             _seachers.Remove(seacher);
         }
 
-        public override Task<List<ResourceDTO>> Search(string searchText)
+        public override async Task<List<ResourceDTO>> Search(string searchText)
         {
             var taskArr = new Task<List<ResourceDTO>>[_seachers.Count];
             for(int i = 0; i < _seachers.Count; i ++)
             {
                 taskArr[i] = _seachers[i].Search(searchText);
             }
-
-            return Task.WhenAny(taskArr).Result;
+            var firstTask =  await TaskExtension.WhenFirst(taskArr, t => t.Status == TaskStatus.RanToCompletion);
+            return firstTask?.Result;
         }
     }
 }

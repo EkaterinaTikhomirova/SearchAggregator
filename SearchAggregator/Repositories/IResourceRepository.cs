@@ -1,9 +1,10 @@
-﻿using SearchAggregator.DataAccess;
-using SearchAggregator.DataAccess.Models;
+﻿using SearchAggregator.DataAccess.Models;
+using System.Threading.Tasks;
 
 namespace SearchAggregator.Repositories
 {
-    interface IResourceRepository : IRepository<Resource>
+    public interface IResourceRepository : IRepository<Resource>
     {
+        Task<Resource> UrlExists(string url);
     }
 }

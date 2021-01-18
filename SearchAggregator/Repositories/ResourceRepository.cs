@@ -1,4 +1,6 @@
-﻿using SearchAggregator.DataAccess.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SearchAggregator.DataAccess.Models;
+using System.Threading.Tasks;
 
 namespace SearchAggregator.Repositories
 {
@@ -6,6 +8,10 @@ namespace SearchAggregator.Repositories
     {
         public ResourceRepository(SearchAggregatorContext context) : base(context)
         {
+        }
+        public async Task<Resource> UrlExists(string url)
+        {
+            return await _entity.SingleOrDefaultAsync(p => p.UrlAddress == url);
         }
     }
 }

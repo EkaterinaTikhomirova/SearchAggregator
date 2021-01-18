@@ -9,7 +9,7 @@
 <body>
     <div>
         <label for="searchText">Input request:</label>
-        <input id="searchText" />
+        <input id="searchText" placeholder="your request"/>
         <button id="searchButton">Search</button>
     </div>
     <div id="partialDiv"></div>
@@ -22,12 +22,15 @@
                     cache: false,
                     type: "GET",
                     url: "api/Search",
-                    data: { "name": text },
+                    data: { "searchText": text },
                     success: function (data) {
+                        $("#partialDiv").empty();
+                        if (data == "")
+                            alert("Nothing found");
                         data.forEach(element => addDiv(element))
                     },
                     error: function (xhr, ajOpt, thrownError) {
-                        alert("Failed to retrieve results");
+                        alert("Seachers don't work");
                     }
                 })
             })
@@ -43,13 +46,14 @@
             link.append(row.title);
             div.appendChild(link);
 
-            var p = document.createElement("p");
-            var text = document.createTextNode(row.description);
+            const p = document.createElement("p");
+            const text = document.createTextNode(row.description);
             p.appendChild(text);
 
             div.appendChild(p);
 
-            document.body.appendChild(div);
+            const d = document.querySelector("#partialDiv")
+            d.appendChild(div);
         }
     </script>
 </body>

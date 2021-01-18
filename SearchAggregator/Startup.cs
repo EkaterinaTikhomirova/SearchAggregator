@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SearchAggregator.Repositories;
 using SearchAggregator.Services;
+using System;
 
 namespace SearchAggregator
 {
@@ -23,7 +25,7 @@ namespace SearchAggregator
         {
             services.AddControllers();
 
-            string connection = _configuration.GetConnectionString("Default");
+            string connection = _configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<SearchAggregatorContext>(options =>
             {
@@ -34,6 +36,9 @@ namespace SearchAggregator
             services.AddScoped(typeof(IKeywordRepository), typeof(KeywordRepository));
 
             services.AddTransient<SearchService, CustomSearchServices>();
+            services.AddTransient<IKeywordService, KeywordService>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using SearchAggregator.DataAccess.Models;
 using System.Threading.Tasks;
 
@@ -10,10 +9,12 @@ namespace SearchAggregator.Repositories
     public abstract class Repository<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly DbSet<T> _entity;
+
         public Repository(SearchAggregatorContext context)
         {
             _entity = context.Set<T>();
         }
+
         public void Add(T obj)
         {
             _entity.Add(obj);

@@ -8,6 +8,10 @@ namespace SearchAggregator.Repositories
     {
         public SearchAggregatorContext(DbContextOptions<SearchAggregatorContext> options) : base(options)
         { }
+
+        protected SearchAggregatorContext()
+        { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
