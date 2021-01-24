@@ -3,7 +3,7 @@
 SearchAggregator is a .NET project that wrote with C#. This application search words that were requested by user in three search services (Yandex, Google, Bing) and put it into a database. If user tries to find something that application found before application returns resources from the database. 
 
 ## Installation
-Use the [link](https://github.com/EkaterinaTikhomirova/SearchAggregator) to install ImageBase. Write code to create repository clone
+Use the [link](https://github.com/EkaterinaTikhomirova/SearchAggregator) to install. Write code to create repository clone
 
 
 ```bash
